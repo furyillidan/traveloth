@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>懶得趕路 隱私權與支援</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, friendly, plain-spoken — a travel app's fine print written like a kind note.
+   IDEA: a trail map card from a slow-travel guidebook.
+   PICTURE: hills at sunrise with a dotted trail ending at a map pin.
+   COLOUR and TYPE: app green #27745A dominant, mint #E4F2E9 support, sun amber #F3A13E accent; Noto Sans TC.
+   LAYOUT: hero band with picture, sticky section links, then readable single-column sections. */
+:root{color-scheme:light dark;
+ --bg:light-dark(#fbfaf6,#141816);--card:light-dark(#ffffff,#1d2320);
+ --ink:light-dark(#1d2a24,#e9efe9);--muted:light-dark(#55625b,#a9b6ae);
+ --green:light-dark(#27745A,#6fd3a8);--mint:light-dark(#E4F2E9,#22352c);
+ --amber:#F3A13E;--line:light-dark(#e2e6df,#2c3631);--hero:light-dark(#e9f4ec,#18241e)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.trail{animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.75 "Noto Sans TC",system-ui,-apple-system,"PingFang TC",sans-serif;overflow-x:clip}
+a{color:var(--green);text-underline-offset:3px}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1040px;margin:0 auto}
+.hero{background:var(--hero)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--green);font-size:18px}
+.brand svg{width:26px;height:26px}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.1;margin:14px 0 12px;text-wrap:balance}
+.lede{color:var(--muted);font-size:17px;margin:0 0 22px;max-width:34em}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;font-weight:500;text-decoration:none;background:var(--green);color:#fff}
+:root[data-theme=dark] .btn,.btn.ghost{background:transparent;color:var(--green);border:1.5px solid var(--green)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{background:transparent;color:var(--green);border:1.5px solid var(--green)}}
+.pic{width:100%;aspect-ratio:5/4;display:block}
+.trail{stroke-dasharray:1 16;animation:walk 6s linear infinite}
+@keyframes walk{to{stroke-dashoffset:-170}}
+nav.scroll{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;padding:8px max(5vw,16px);white-space:nowrap}
+nav.scroll a{flex:none;padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:500;font-size:15px}
+nav.scroll a:hover,nav.scroll a:focus-visible{background:var(--mint);outline:none}
+section h2{font-size:clamp(24px,3vw,32px);line-height:1.2;margin:0 0 6px}
+.meta{color:var(--muted);font-size:14px;margin:0 0 24px}
+section h3{font-size:19px;margin:28px 0 6px}
+section p,section li{max-width:68ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,32px)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin:8px 0 8px}
+.fact{background:var(--mint);border-radius:14px;padding:14px 16px}
+.fact b{display:block;color:var(--green);font-size:15px;margin-bottom:2px}
+.fact span{font-size:14.5px;color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:14px}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;font-weight:500;padding:10px 0;min-height:44px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"＋";color:var(--green)}
+details[open] summary::after{content:"－"}
+summary:focus-visible{outline:2px solid var(--green);outline-offset:4px;border-radius:6px}
+details p,details ol{margin:0 0 12px;color:var(--ink)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.mail code{font-size:16px;background:var(--mint);padding:6px 10px;border-radius:8px;overflow-wrap:anywhere}
+.copy{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--green);background:transparent;color:var(--green);font:inherit;font-weight:500;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.en{border-top:6px solid var(--mint)}
+@media(max-width:700px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.pic{max-width:420px;margin:0 auto}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;white-space:normal;color:var(--muted);font-weight:700}.stack td:empty{display:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+
+<header class="band hero">
+  <div class="wrap">
+    <div>
+      <div class="brand">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg>
+        懶得趕路 Traveloth
+      </div>
+      <h1>隱私權政策與使用支援</h1>
+      <p class="lede">慢慢來，也是一種旅行。這一頁用白話說明 App 會用到哪些資料、怎麼保護你，以及遇到問題時怎麼找到我們。</p>
+      <div class="btns">
+        <a class="btn" href="#privacy">隱私權政策</a>
+        <a class="btn ghost" href="#support">使用支援</a>
+        <a class="btn ghost" href="#english">English</a>
+      </div>
+    </div>
+    <svg class="pic" viewBox="0 0 500 400" role="img" aria-label="日出時的山丘，一條點點小路通往地圖釘">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE4B8"/><stop offset="1" stop-color="#FFF6E7"/></linearGradient>
+        <linearGradient id="h1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4CB08A"/><stop offset="1" stop-color="#2E8B66"/></linearGradient>
+        <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E8B66"/><stop offset="1" stop-color="#1F6B50"/></linearGradient>
+        <clipPath id="frame"><rect width="500" height="400" rx="28"/></clipPath>
+      </defs>
+      <g clip-path="url(#frame)">
+        <rect width="500" height="400" fill="url(#sky)"/>
+        <circle cx="350" cy="185" r="62" fill="#F3A13E"/>
+        <circle cx="350" cy="185" r="88" fill="#F3A13E" opacity=".15"/>
+        <path d="M0 250 C 90 190 170 215 250 200 S 410 160 500 210 V400 H0Z" fill="url(#h1)"/>
+        <path d="M0 300 C 120 255 230 300 330 280 S 460 250 500 270 V400 H0Z" fill="url(#h2)"/>
+        <path d="M-10 400 C 60 360 140 380 200 340 S 300 300 330 262" fill="none" stroke="#E4F2E9" stroke-width="9" stroke-linecap="round" class="trail"/>
+        <g transform="translate(330 262)">
+          <ellipse cx="0" cy="4" rx="16" ry="5" fill="#123F31" opacity=".35"/>
+          <path d="M0 0 C -6 -14 -20 -22 -20 -38 A20 20 0 0 1 20 -38 C 20 -22 6 -14 0 0Z" fill="#FFF6E7" stroke="#1F6B50" stroke-width="3"/>
+          <circle cx="0" cy="-38" r="7.5" fill="#1F6B50"/>
+        </g>
+        <g fill="#1F6B50" opacity=".9">
+          <path d="M70 248 l14 -36 14 36z"/><rect x="81" y="246" width="6" height="12"/>
+          <path d="M108 240 l11 -28 11 28z"/><rect x="117" y="238" width="5" height="10"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<nav class="scroll" aria-label="章節">
+  <a href="#privacy">隱私權政策</a>
+  <a href="#data">會用到的資料</a>
+  <a href="#third">第三方服務</a>
+  <a href="#rights">你的權利</a>
+  <a href="#support">使用支援</a>
+  <a href="#faq">常見問題</a>
+  <a href="#contact">聯絡我們</a>
+  <a href="#english">English</a>
+</nav>
+
+<main>
+<section class="band" id="privacy">
+  <div class="wrap">
+    <h2>隱私權政策</h2>
+    <p class="meta">生效日期：2026 年 11 月 27 日（1.1 版起）・ 適用 App：懶得趕路（Traveloth）iOS 版</p>
+    <div class="facts">
+      <div class="fact"><b>不需要註冊帳號</b><span>打開就能用，不收集姓名、電話或 Email。</span></div>
+      <div class="fact"><b>行程只存在你的手機</b><span>我們沒有伺服器，也看不到你的旅程內容。</span></div>
+      <div class="fact"><b>沒有廣告、沒有追蹤</b><span>不使用分析工具，不跨 App 追蹤你。</span></div>
+      <div class="fact"><b>AI 在手機上處理</b><span>行程建議由 iPhone 內建的 Apple Intelligence 產生，行程不會上傳。</span></div>
+    </div>
+    <p>「懶得趕路」（以下稱「本 App」）是一個幫你安排旅行行程的工具。我們重視你的隱私，所以把本 App 設計成盡量不碰你的個人資料：所有行程與設定都只儲存在你自己的裝置上。以下說明本 App 會用到哪些資料、用途是什麼，以及你可以怎麼控制。</p>
+
+    <h3 id="data">一、本 App 會用到的資料</h3>
+    <div class="card">
+      <table class="stack">
+        <thead><tr><th>資料</th><th>用途</th><th>存放位置</th></tr></thead>
+        <tbody>
+          <tr><td>大概位置（使用 App 時）</td><td>把地圖移到你附近、以目前位置為中心搜尋景點。只有在你允許「使用 App 期間」取用位置時才會使用，可以隨時在「設定 → 隱私權 → 定位服務」關閉。</td><td>不會儲存，也不會傳送給我們</td></tr>
+          <tr><td>你建立的旅程、景點、日期、停留時間、交通方式</td><td>顯示與編輯你的行程。</td><td>只存在你的裝置</td></tr>
+          <tr><td>App 設定（預設地圖、預設交通方式等）</td><td>記住你的偏好。</td><td>只存在你的裝置</td></tr>
+          <tr><td>你輸入的搜尋文字與地圖位置</td><td>搜尋地點、計算路程時間、顯示地圖。這些查詢會送到下方列出的地圖服務處理。</td><td>由地圖服務提供者依其政策處理</td></tr>
+          <tr><td>行程中景點的位置與日期</td><td>查詢每一站的天氣預報或往年同期天氣。只會送出景點的座標與日期，不含你的身分資料。</td><td>由 Apple 天氣（WeatherKit）處理</td></tr>
+          <tr><td>景點名稱與位置（只有你按下「從 Google 地圖自動帶入」時）</td><td>查詢該景點的營業時間。查到的結果存在你的行程裡，同一站不會重複查詢。</td><td>由 Google（Places API）依其政策處理</td></tr>
+          <tr><td>行程內容（景點、停留時間、天氣摘要）</td><td>產生 AI 行程建議與行前清單建議。使用 iPhone 內建的 Apple Intelligence 在裝置上處理，不會傳送到網路。</td><td>只在你的裝置上處理</td></tr>
+          <tr><td>今天行程的摘要（景點名稱與時間）</td><td>顯示在主畫面小工具、動態島與鎖定畫面的即時動態。</td><td>只存在你的裝置（App 與小工具共用的本機空間）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>本 App 的開發者不會收集、儲存、出售或分享你的個人資料，也沒有自己的伺服器接收你的資料。</p>
+
+    <h3 id="third">二、第三方服務</h3>
+    <p>為了顯示地圖與搜尋地點，本 App 使用以下服務。當你使用相關功能時，你的搜尋文字、地圖範圍或位置可能會傳送給這些服務，並受其隱私權政策規範：</p>
+    <ul>
+      <li><b>Apple 地圖（MapKit）</b>：地點搜尋、自動完成建議、路程時間估算與 Apple 地圖底圖。<a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple 隱私權政策</a></li>
+      <li><b>Google 地圖（Maps SDK for iOS）</b>：只有在你選擇「Google 地圖」底圖時使用。<a href="https://policies.google.com/privacy" rel="noopener">Google 隱私權政策</a></li>
+      <li><b>Apple 天氣（WeatherKit）</b>：景點天氣預報與往年同期平均。<a href="https://weatherkit.apple.com/legal-attribution.html" rel="noopener">Apple 天氣資料來源</a>・<a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple 隱私權政策</a></li>
+      <li><b>Google 地點資訊（Places API）</b>：只有你在營業時間頁按下「從 Google 地圖自動帶入」時使用。<a href="https://policies.google.com/privacy" rel="noopener">Google 隱私權政策</a></li>
+    </ul>
+    <p>AI 行程建議使用 iPhone 內建的 Apple Intelligence（裝置端模型），在你的手機上處理，不會傳送給我們或其他第三方。不支援 Apple Intelligence 的手機，只會使用路線計算與地圖推薦，不使用 AI。</p>
+    <p>當你使用「用 Apple 地圖／Google 地圖導航」時，本 App 會開啟對應的地圖 App 或網頁，並帶入目的地座標，之後的操作由該服務處理。</p>
+
+    <h3 id="rights">三、你的權利與資料刪除</h3>
+    <ul>
+      <li>你可以隨時在 App 內刪除單一旅程，或到「設定 → 清除所有旅程」刪除全部資料。</li>
+      <li>刪除本 App 時，存在裝置上的所有旅程與設定也會一併刪除。</li>
+      <li>你可以在 iPhone 的「設定」中隨時開啟或關閉定位權限；關閉後本 App 仍可正常使用，只是不會以你的位置為中心。</li>
+    </ul>
+
+    <h3>四、兒童隱私</h3>
+    <p>本 App 不針對 13 歲以下兒童設計，也不會在知情的情況下收集兒童的個人資料。</p>
+
+    <h3>五、意見回饋</h3>
+    <p>如果你透過 Email 寫信給我們，我們只會用你的信件內容與 Email 地址回覆你、改善 App，不會用於其他用途或提供給第三方。</p>
+
+    <h3>六、政策更新</h3>
+    <p>如果本政策有重大變更，我們會更新本頁的生效日期，並在 App 更新說明中告知。</p>
+  </div>
+</section>
+
+<section class="band" id="support" style="background:var(--hero)">
+  <div class="wrap">
+    <h2>使用支援</h2>
+    <p class="meta">遇到問題先看看下面的常見問題；找不到答案的話，歡迎直接寫信給我們。</p>
+
+    <div class="card" id="faq">
+      <details open><summary>怎麼建立第一趟旅程？</summary>
+        <p>在首頁按「開始旅行計畫」或「新增旅行清單」，取個名字就好。進去後用上方的搜尋列找景點，在地點資訊卡按「加入行程」。新景點會自動排到最順路的位置。</p></details>
+      <details><summary>怎麼調整景點順序，或搬到別天？</summary>
+        <p>長按景點卡片拖曳，放到想要的位置就好。拖到上方的日期分頁上，就能搬到那一天。長按日期分頁拖到另一天，可以整天對調。</p></details>
+      <details><summary>交通方式和停留時間可以每段不一樣嗎？</summary>
+        <p>可以。點兩個景點之間的「約 XX 分 · 開車」可以改那一段的交通方式；點卡片上的停留時間可以自訂。出發時間旁的按鈕可以一次把全部路段改成同一種交通方式。</p></details>
+      <details><summary>可以直接開導航嗎？</summary>
+        <p>可以。行程列表上方的「導航全程」會把當天所有景點帶進 Apple 地圖或 Google 地圖，路線排好後按「出發」即可。單一景點也可以從卡片的「⋯」選單導航。</p></details>
+      <details><summary>地圖沒有以我的位置為中心？</summary>
+        <ol><li>到 iPhone「設定 → 隱私權與安全性 → 定位服務」確認已開啟。</li><li>在清單中找到「懶得趕路」，選「使用 App 期間」。</li><li>回到 App，按地圖右側的定位按鈕。</li></ol></details>
+      <details><summary>換手機後，旅程還在嗎？</summary>
+        <p>目前旅程只存在裝置本機，不會自動同步到新手機或其他裝置。換機前可以用行程頁右上角的「分享旅程」把行程文字傳給自己保存。</p></details>
+      <details><summary>景點卡片上的天氣怎麼看？</summary>
+        <p>先在日期分頁設定那一天的日期。出發日在 10 天內，每一站會顯示「抵達那個小時」的天氣預報；超過 10 天，則顯示過去幾十年同一天的平均（往年同期，僅供參考）。點天氣標籤可以看各站天氣和逐小時預報。</p></details>
+      <details><summary>「✨ 建議」需要什麼手機？</summary>
+        <p>路線順序最佳化和附近景點推薦，所有 iPhone 都能用。AI 總評與推薦理由需要 iOS 26 以上、支援 Apple Intelligence 的 iPhone（例如 iPhone 15 Pro、iPhone 16 以上），並在「設定 → Apple Intelligence 與 Siri」開啟。</p></details>
+      <details><summary>怎麼在動態島和主畫面看到今天的行程？</summary>
+        <p>把行程的日期設成今天，打開 App 就會自動在動態島與鎖定畫面顯示下一站和倒數（可在 App 設定關閉）。主畫面小工具：長按主畫面空白處 → 左上角「＋」→ 搜尋「懶得趕路」→ 加入。</p></details>
+      <details><summary>營業時間怎麼設定？</summary>
+        <p>在景點卡片的「⋯」選「填營業時間」，可以從 Google 地圖自動帶入，或打開 Apple／Google 地圖看完自己填。設定後，如果抵達時還沒開門、已經打烊或遇到公休，卡片上會提醒你。</p></details>
+      <details><summary>App 要收費嗎？</summary>
+        <p>不用，本 App 目前完全免費，沒有廣告，也沒有內購。</p></details>
+    </div>
+
+    <h3 id="contact">聯絡我們</h3>
+    <div class="mail">
+      <code id="email">killerneo19@yahoo.com.tw</code>
+      <button class="copy" type="button" data-copy="killerneo19@yahoo.com.tw">複製 Email</button>
+      <a href="mailto:killerneo19@yahoo.com.tw?subject=%E6%87%B6%E5%BE%97%E8%B6%95%E8%B7%AF%20%E5%95%8F%E9%A1%8C%E5%9B%9E%E5%A0%B1">寫信給我們</a>
+    </div>
+    <p class="meta" style="margin-top:12px">來信時附上 iPhone 型號、iOS 版本和截圖，可以幫我們更快找到問題。</p>
+  </div>
+</section>
+
+<section class="band en" id="english" lang="en">
+  <div class="wrap">
+    <h2>Privacy Policy &amp; Support (English)</h2>
+    <p class="meta">Effective date: November 27, 2026 (from version 1.1) · App: Traveloth (懶得趕路) for iOS</p>
+    <p>Traveloth is a trip-planning app. It needs no account, has no ads or analytics, and does not track you. The developer does not collect, store, sell or share your personal data, and runs no server that receives it.</p>
+    <h3>Data the app uses</h3>
+    <ul>
+      <li><b>Approximate location (while using the app)</b> — to center the map and search near you. Only used if you allow it; never stored or sent to us. You can turn it off any time in Settings → Privacy &amp; Security → Location Services.</li>
+      <li><b>Your trips, places, dates and settings</b> — stored only on your device.</li>
+      <li><b>Search text and map area</b> — sent to the map services below to find places, estimate travel times and show the map.</li>
+      <li><b>Locations and dates of the stops in your trip</b> — sent to Apple Weather (WeatherKit) to show forecasts or historical averages. No identity data is sent.</li>
+      <li><b>Name and location of a stop</b> — sent to Google (Places API) only when you tap “Auto-fill from Google Maps” to look up opening hours.</li>
+      <li><b>AI trip suggestions</b> — generated on your device by Apple Intelligence; your trip is not uploaded.</li>
+      <li><b>Today’s itinerary summary</b> — kept on your device so the widget and Live Activity can show your next stop.</li>
+    </ul>
+    <h3>Third-party services</h3>
+    <ul>
+      <li><b>Apple Maps (MapKit)</b> — search, suggestions, travel times and the Apple map. <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a></li>
+      <li><b>Google Maps (Maps SDK for iOS)</b> — only when you choose the Google map. <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a></li>
+      <li><b>Apple Weather (WeatherKit)</b> — weather for your stops. <a href="https://weatherkit.apple.com/legal-attribution.html" rel="noopener">Data sources</a></li>
+      <li><b>Google Places API</b> — opening hours, only when you request them. <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a></li>
+    </ul>
+    <h3>Deleting your data</h3>
+    <p>Delete a trip in the app, use Settings → Clear all trips, or delete the app to remove all data stored on your device. The app is not directed to children under 13. If this policy changes, we will update the effective date on this page.</p>
+    <h3>Support</h3>
+    <p>Questions or feedback: <b>killerneo19@yahoo.com.tw</b>. Please include your iPhone model, iOS version and a screenshot if possible.</p>
+  </div>
+</section>
+</main>
+
+<footer class="band">
+  <div class="wrap">© 2026 懶得趕路 Traveloth ・ 慢慢來，也是一種旅行。</div>
+</footer>
+
+<script>
+{
+  for (const b of document.querySelectorAll('.copy')) {
+    b.addEventListener('click', async () => {
+      const original = b.textContent;
+      try {
+        await navigator.clipboard.writeText(b.dataset.copy);
+        b.textContent = '已複製';
+      } catch (e) {
+        b.textContent = '請手動複製上方地址';
+      }
+      setTimeout(() => { b.textContent = original; }, 2000);
+    });
+  }
+}
+</script>
+</body>
+</html>
